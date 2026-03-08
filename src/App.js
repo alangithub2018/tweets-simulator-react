@@ -4,6 +4,8 @@ import { Container, Snackbar } from "@mui/material";
 
 import Header from "./components/Header";
 import SendTweet from "./components/SendTweet";
+import ListTweets from "./components/ListTweets";
+
 import { TWEETS_STORAGE } from "./utils/constants";
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
         setToastProps={setToastProps}
         allTweets={allTweets}
       />
+      <ListTweets allTweets={allTweets} />
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={toastProps.open}
