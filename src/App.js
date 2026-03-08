@@ -15,13 +15,15 @@ function App() {
   });
 
   const [allTweets, setAllTweets] = useState([]);
+  const [reloadTweets, setReloadTweets] = useState(false);
 
   useEffect(() => {
     const allTweetsArray = JSON.parse(localStorage.getItem(TWEETS_STORAGE));
     if (allTweetsArray) {
       setAllTweets(allTweetsArray);
     }
-  }, []);
+    setReloadTweets(false);
+  }, [reloadTweets]);
 
   const deleteTweet = (index) => {
     const allTweetsArray = JSON.parse(localStorage.getItem(TWEETS_STORAGE));
@@ -32,6 +34,7 @@ function App() {
       open: true,
       message: "Tweet eliminado...",
     });
+    setReloadTweets(true);
   };
 
   return (
