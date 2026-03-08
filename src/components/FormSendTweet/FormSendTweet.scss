@@ -1,0 +1,10 @@
+.form-send-tweet {
+  background-color: #fff;
+  border: 2px solid #00acee;
+  padding: 20px;
+  width: 600px;
+
+  &__title {
+    margin: 0 !important;
+  }
+}
