@@ -9,7 +9,8 @@ import { TWEETS_STORAGE } from "../../utils/constants";
 
 import "./SendTweet.scss";
 
-export default function SendTweet() {
+export default function SendTweet(props) {
+  const { setToastProps } = props;
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const openModal = () => {
@@ -26,12 +27,18 @@ export default function SendTweet() {
     let allTweetsArray = [];
 
     if (!name || !tweet) {
-      alert("Todos los campos son obligatorios");
+      setToastProps({
+        open: true,
+        message: "Todos los campos son obligatorios",
+      });
     } else {
       formValue.time = moment();
       allTweetsArray.push(formValue);
       localStorage.setItem(TWEETS_STORAGE, JSON.stringify(allTweetsArray));
-      console.log("Tweet enviado correctamente.");
+      setToastProps({
+        open: true,
+        message: "Tweet enviado correctamente",
+      });
       closeModal();
     }
     allTweetsArray = [];
