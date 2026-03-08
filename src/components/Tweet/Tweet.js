@@ -10,13 +10,14 @@ export default function Tweet(props) {
   const {
     tweet: { name, tweet, time },
     index,
+    deleteTweet,
   } = props;
   return (
     <Card className="tweet">
       <CardContent>
         <div className="tweet__header">
           <h5>{name}</h5>
-          <DeleteTwoTone onClick={() => console.log("Tweet eliminado...")} />
+          <DeleteTwoTone onClick={() => deleteTweet(index)} />
         </div>
         <p>{tweet}</p>
         <div className="tweet__date-add-tweet">

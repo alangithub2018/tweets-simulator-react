@@ -23,6 +23,17 @@ function App() {
     }
   }, []);
 
+  const deleteTweet = (index) => {
+    const allTweetsArray = JSON.parse(localStorage.getItem(TWEETS_STORAGE));
+    allTweetsArray.splice(index, 1);
+    localStorage.setItem(TWEETS_STORAGE, JSON.stringify(allTweetsArray));
+    setAllTweets(allTweetsArray);
+    setToastProps({
+      open: true,
+      message: "Tweet eliminado...",
+    });
+  };
+
   return (
     <Container
       className="tweets-simulator"
@@ -33,7 +44,10 @@ function App() {
         setToastProps={setToastProps}
         allTweets={allTweets}
       />
-      <ListTweets allTweets={allTweets} />
+      <ListTweets
+        allTweets={allTweets}
+        deleteTweet={deleteTweet}
+      />
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={toastProps.open}

@@ -6,7 +6,7 @@ import Tweet from "../Tweet";
 import "./ListTweets.scss";
 
 export default function ListTweets(props) {
-  const { allTweets } = props;
+  const { allTweets, deleteTweet } = props;
 
   if (!allTweets || allTweets.length === 0) {
     return (
@@ -31,6 +31,7 @@ export default function ListTweets(props) {
           <Tweet
             tweet={tweet}
             index={index}
+            deleteTweet={deleteTweet}
           />
         </Grid>
       ))}
